@@ -6,7 +6,7 @@ directory = 'images'
 if not os.path.exists(directory):
     os.makedirs(directory)
 
-filename = 'img1.jpeg'
+filename = '{}/img1.jpeg'.format(directory)
 
 url = 'https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg'
 
