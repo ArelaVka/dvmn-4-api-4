@@ -11,10 +11,18 @@ def download_img(url, img_name, directory):
     with open(filename, 'wb') as file:
         file.write(response.content)
 
+def get_img_url(url):
+  response = requests.get(url).json()
+  return response["links"]["flickr_images"]
+
+
 if __name__ == "__main__":
     directory = 'images'
-    url = 'https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg'
-    img_name = 'img1.jpeg'
     make_dir(directory)
-    download_img(url, img_name, directory)
-    
+    #url = 'https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg'
+    #img_name = 'img1.jpeg'
+    #download_img(url, img_name, directory)
+    url = 'https://api.spacexdata.com/v3/launches/latest'
+    #print(get_img_url(url))
+    for n, img_url in enumerate(get_img_url(url), 1):
+      download_img(img_url, 'spacex{}.jpg'.format(n), directory)
