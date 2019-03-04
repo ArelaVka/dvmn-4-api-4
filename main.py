@@ -1,28 +1,18 @@
 import requests
 import os
 
-def make_dir(name_of_dir):
-    if not os.path.exists(name_of_dir):
-        os.makedirs(name_of_dir)
-
-def download_img(url, img_name, directory):
-    filename = '{}/{}'.format(directory, img_name)
-    response = requests.get(url)
+def fetch_spacex_last_launch():
+  url = 'https://api.spacexdata.com/v3/launches/latest'
+  directory = 'images'
+  if not os.path.exists(directory):
+        os.makedirs(directory)
+  response_json = requests.get(url).json()
+  img_links = response_json["links"]["flickr_images"]
+  for n, img_link in enumerate(img_links, 1):
+    filename = '{}/spacex{}.jpg'.format(directory, n)
     with open(filename, 'wb') as file:
-        file.write(response.content)
-
-def get_img_url(url):
-  response = requests.get(url).json()
-  return response["links"]["flickr_images"]
-
-
+        file.write(requests.get(img_link).content)
+        
+     
 if __name__ == "__main__":
-    directory = 'images'
-    make_dir(directory)
-    #url = 'https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg'
-    #img_name = 'img1.jpeg'
-    #download_img(url, img_name, directory)
-    url = 'https://api.spacexdata.com/v3/launches/latest'
-    #print(get_img_url(url))
-    for n, img_url in enumerate(get_img_url(url), 1):
-      download_img(img_url, 'spacex{}.jpg'.format(n), directory)
+    fetch_spacex_last_launch()
