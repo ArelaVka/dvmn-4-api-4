@@ -17,8 +17,8 @@ def fetch_spacex_last_launch():
 def get_hubble_img_link(image_id):
   url = 'http://hubblesite.org/api/v3/image/' + image_id
   response_json = requests.get(url).json()
-  for link in enumerate(response_json["image_files"]):
-    img_link = response_json["image_files"]["file_url"]
+  for n, link in enumerate(response_json["image_files"]):
+    img_link = response_json["image_files"][n]["file_url"]
   return img_link
 
 def get_file_extension(image_link):
@@ -38,15 +38,22 @@ def download_hubble_img(image_id):
 def get_hubble_image_id(collection):
   images_id = []
   url = 'http://hubblesite.org/api/v3/images/' + collection
+  response_json = requests.get(url).json()
   for image in response_json:
-    print(image["id"])
+    images_id.append(image["id"])
+  for image_id in images_id:
+    download_hubble_img(image_id)
+
 
 
 
 if __name__ == "__main__":
   image_id = '1'
+  collection = 'holiday_cards'
+  get_hubble_image_id(collection)
+
   #download_hubble_img(image_id)
-  image_link = get_hubble_img_link(image_id)
-  print(image_link)
+  #image_link = get_hubble_img_link(image_id)
+  #print(image_link)
   #print(get_file_extension(image_link))
   #fetch_spacex_last_launch()
