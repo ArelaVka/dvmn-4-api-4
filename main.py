@@ -31,7 +31,7 @@ def download_hubble_img(image_id):
         os.makedirs(directory)
   url = get_hubble_img_link(image_id)
   ext = get_file_extension(url)
-  filename = '{}.{}'.format(image_id, ext)
+  filename = '{}/{}.{}'.format(directory, image_id, ext)
   with open(filename, 'wb') as file:
         file.write(requests.get(url).content)
 
