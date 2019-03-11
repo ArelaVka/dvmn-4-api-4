@@ -3,6 +3,7 @@ import os
 import instabot
 
 
+
 def fetch_spacex_last_launch():
   url = 'https://api.spacexdata.com/v3/launches/latest'
   directory = 'images'
@@ -52,9 +53,8 @@ def get_hubble_image_id(collection):
 
 if __name__ == "__main__":
   image_id = '1'
-  collection = 'holiday_cards'
+  collection = 'spacecraft'
   get_hubble_image_id(collection)
-
   #download_hubble_img(image_id)
   #image_link = get_hubble_img_link(image_id)
   #print(image_link)
