@@ -39,7 +39,7 @@ def get_hubble_image_id(collection):
   images_id = []
   url = 'http://hubblesite.org/api/v3/images/' + collection
   for image in response_json:
-    print image["id"]
+    print(image["id"])
 
 
 
