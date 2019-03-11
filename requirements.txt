@@ -2,4 +2,4 @@ requests==2.20.1
 python-dotenv==0.10.1
 urllib3==1.23
 setuptools==40.8.0
-instabot
+instabot==0.26.0
