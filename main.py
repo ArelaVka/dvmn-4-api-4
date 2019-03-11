@@ -51,7 +51,12 @@ def get_hubble_image_id(collection):
 
 if __name__ == "__main__":
 	load_dotenv()
-	token=os.getenv("TOKEN")
+	login=os.getenv("INSTA_LOGIN")
+	password=os.getenv("INSTA_PASS")
+
+	bot = Bot()
+	bot.login(username=login, password=password)
+
 	image_id = '1'
 	collection = 'spacecraft'
 	#get_hubble_image_id(collection)
