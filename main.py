@@ -42,7 +42,9 @@ def get_hubble_image_id(collection):
   for image in response_json:
     images_id.append(image["id"])
   for image_id in images_id:
+    print('downloading image id = {}'.format(image_id))
     download_hubble_img(image_id)
+    print('OK!')
 
 
 
