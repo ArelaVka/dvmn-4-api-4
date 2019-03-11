@@ -1,6 +1,8 @@
 import requests
 import os
 import instabot
+from dotenv import load_dotenv
+from instabot import Bot
 
 
 
@@ -54,12 +56,12 @@ if __name__ == "__main__":
 	login=os.getenv("INSTA_LOGIN")
 	password=os.getenv("INSTA_PASS")
 
-	bot = Bot()
-	bot.login(username=login, password=password)
+	#bot = Bot()
+	#bot.login(username=login, password=password)
 
 	image_id = '1'
 	collection = 'spacecraft'
-	#get_hubble_image_id(collection)
+	get_hubble_image_id(collection)
 	#download_hubble_img(image_id)
 	#image_link = get_hubble_img_link(image_id)
 	#print(image_link)
