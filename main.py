@@ -1,5 +1,6 @@
 import requests
 import os
+import instabot
 
 
 def fetch_spacex_last_launch():
