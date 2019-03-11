@@ -17,8 +17,8 @@ def fetch_spacex_last_launch():
 def get_hubble_img_link(image_id):
   url = 'http://hubblesite.org/api/v3/image/' + image_id
   response_json = requests.get(url).json()
-  for n, link in enumerate(response_json["image_files"]):
-    img_link = response_json["image_files"][n]["file_url"]
+  for link in enumerate(response_json["image_files"]):
+    img_link = response_json["image_files"]["file_url"]
   return img_link
 
 def get_file_extension(image_link):
