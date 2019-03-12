@@ -1,5 +1,9 @@
 # Downloaded images
 images/
+*.txt
+*.checkpoint
+# except requirements.txt
+!requirements.txt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
