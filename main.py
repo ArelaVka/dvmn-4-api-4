@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 from instabot import Bot
 import glob
 from os import listdir
-#import fetch_spacex
-#import fetch_hubble
+import fetch_spacex
+import fetch_hubble
 
 
 def upload_to_instagramm(login, password, picdir):
