@@ -99,32 +99,4 @@ if __name__ == "__main__":
 				f.write(full_path_img + "\n")
 
 	clear_img_dir(picdir)
-
-	'''
-	while True:
-		pics = glob.glob("./images/*")
-		pics = sorted(pics)
-		for pic in pics:
-			print(pic)
-		
-		try:
-			for pic in pics:
-				if pic in posted_pic_list:
-					continue
-				caption = pic[:-4].split(" ")
-				caption = " ".join(caption[1:])
-				print("upload: " + caption)
-				bot.upload_photo(pic, caption=caption)
-				if bot.api.last_response.status_code != 200:
-					print(bot.api.last_response)
-					# snd msg
-					break
-				if pic not in posted_pic_list:
-					posted_pic_list.append(pic)
-					with open('pics.txt', 'a', encoding='utf8') as f:
-						f.write(pic + "\n")
-				time.sleep(timeout)
-		except Exception as e:
-			print(str(e))
-		time.sleep(timeout)
-'''
+	
