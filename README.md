@@ -10,7 +10,7 @@ dvmn - API веб-сервисов - Урок 4. Ты просто космос
 pip3 install -r requirements.txt
 ```
 * создать файл с аутентификационными данными для подключения к instagramm (.env):
-'''
+'''txt
 INSTA_LOGIN=<instagram_login>
 INSTA_PASS=<instagram_password>
 '''
