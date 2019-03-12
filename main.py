@@ -8,8 +8,6 @@ import time
 from os import listdir
 
 
-
-
 def fetch_spacex_last_launch():
 	url = 'https://api.spacexdata.com/v3/launches/latest'
 	directory = 'images'
@@ -57,6 +55,13 @@ def get_hubble_image_id(collection):
 		print('OK!')
 
 
+def clear_img_dir(picdir):
+	remove_files = glob.glob('./' + picdir + '/*CONVERTED*')
+	print(remove_files)
+	for remove_file in remove_files:
+		os.remove(remove_file)
+
+
 if __name__ == "__main__":
 
 	collection = 'news'
@@ -72,9 +77,6 @@ if __name__ == "__main__":
 	except Exception:
 			posted_pic_list = []
 
-	timeout = 30
-
-
 	load_dotenv()
 	login=os.getenv("INSTA_LOGIN")
 	password=os.getenv("INSTA_PASS")
@@ -88,14 +90,15 @@ if __name__ == "__main__":
 	mypics = listdir(picdir)
 	mypics.sort()
 	for mypic in mypics:
-		print('uploading: {}'.format(mypic))
-		if mypic not in posted_pic_list:
-			bot.upload_photo(mypic)
-			posted_pic_list.append(mypic)
+		full_path_img = './{}/{}'.format(picdir, mypic)
+		if full_path_img not in posted_pic_list:
+			print(full_path_img)
+			bot.upload_photo(full_path_img, caption=mypic)
+			posted_pic_list.append(full_path_img)
 			with open('pics.txt', 'a', encoding='utf8') as f:
-				f.write(mypic + "\n")
+				f.write(full_path_img + "\n")
 
-
+	clear_img_dir(picdir)
 
 	'''
 	while True:
