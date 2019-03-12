@@ -22,3 +22,7 @@ python3 fetch_hubble.py
 ```bash
 python3 fetch_spacex.py
 ```
+### Использование основного скрипта (main.py) загрузит изображения в директорию images и выгрузит в instagram
+```bash
+python3 main.py
+```
