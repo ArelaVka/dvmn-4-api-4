@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 from instabot import Bot
 import glob
 from os import listdir
-#import fetch_spacex
-#import fetch_hubble
+import fetch_spacex
+import fetch_hubble
 
 
 def upload_to_instagramm(login, password, picdir):
@@ -36,10 +36,10 @@ def clear_img_dir(picdir):
 
 if __name__ == "__main__":
 
-    #load_dotenv()
-    #login=os.getenv("INSTA_LOGIN")
-    #password=os.getenv("INSTA_PASS")
+    load_dotenv()
+    login=os.getenv("INSTA_LOGIN")
+    password=os.getenv("INSTA_PASS")
 
     picdir = 'images'
-    #upload_to_instagramm(login, password, picdir)
+    upload_to_instagramm(login, password, picdir)
     clear_img_dir(picdir)
