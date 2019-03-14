@@ -9,39 +9,39 @@ import fetch_hubble
 
 
 def upload_to_instagramm(login, password, picdir):
-	try:
-		with open('pics.txt', 'r', encoding='utf8') as f:
-			posted_pic_list = f.read().splitlines()
-	except Exception:
-			posted_pic_list = []
+    try:
+        with open('pics.txt', 'r', encoding='utf8') as f:
+            posted_pic_list = f.read().splitlines()
+    except Exception:
+            posted_pic_list = []
 
-	bot = Bot()
-	bot.login(username=login, password=password)
+    bot = Bot()
+    bot.login(username=login, password=password)
 
-	mypics = listdir(picdir)
-	mypics.sort()
-	for mypic in mypics:
-		full_path_img = './{}/{}'.format(picdir, mypic)
-		if full_path_img not in posted_pic_list:
-			print(full_path_img)
-			bot.upload_photo(full_path_img, caption=mypic)
-			posted_pic_list.append(full_path_img)
-			with open('pics.txt', 'a', encoding='utf8') as f:
-				f.write(full_path_img + "\n")
+    mypics = listdir(picdir)
+    mypics.sort()
+    for mypic in mypics:
+        full_path_img = './{}/{}'.format(picdir, mypic)
+        if full_path_img not in posted_pic_list:
+            print(full_path_img)
+            bot.upload_photo(full_path_img, caption=mypic)
+            posted_pic_list.append(full_path_img)
+            with open('pics.txt', 'a', encoding='utf8') as f:
+                f.write(full_path_img + "\n")
 
 def clear_img_dir(picdir):
-	remove_files = glob.glob('./' + picdir + '/*CONVERTED*')
-	print(remove_files)
-	for remove_file in remove_files:
-		os.remove(remove_file)
+    remove_files = glob.glob('./' + picdir + '/*CONVERTED*')
+    print(remove_files)
+    for remove_file in remove_files:
+        os.remove(remove_file)
 
 
 if __name__ == "__main__":
 
-	load_dotenv()
-	login=os.getenv("INSTA_LOGIN")
-	password=os.getenv("INSTA_PASS")
+    load_dotenv()
+    login=os.getenv("INSTA_LOGIN")
+    password=os.getenv("INSTA_PASS")
 
-	picdir = 'images'
-	upload_to_instagramm(login, password, picdir)
-	clear_img_dir(picdir)
+    picdir = 'images'
+    upload_to_instagramm(login, password, picdir)
+    clear_img_dir(picdir)
