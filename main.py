@@ -8,7 +8,7 @@ import fetch_spacex
 import fetch_hubble
 
 
-def upload_to_instagramm(login, password, picdir):
+def upload_to_instagram(login, password, picdir):
     try:
         with open('pics.txt', 'r', encoding='utf8') as f:
             posted_pic_list = f.read().splitlines()
@@ -41,5 +41,5 @@ if __name__ == "__main__":
     password=os.getenv("INSTA_PASS")
 
     picdir = 'images'
-    upload_to_instagramm(login, password, picdir)
+    upload_to_instagram(login, password, picdir)
     clear_img_dir(picdir)
