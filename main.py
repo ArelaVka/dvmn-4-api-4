@@ -12,7 +12,7 @@ def upload_to_instagramm(login, password, picdir):
     try:
         with open('pics.txt', 'r', encoding='utf8') as f:
             posted_pic_list = f.read().splitlines()
-    except Exception:
+    except ValueError:
             posted_pic_list = []
 
     bot = Bot()
